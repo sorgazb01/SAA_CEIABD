@@ -1,0 +1,45 @@
+# Ignorar todas las carpetas llamadas "bin" en cualquier subdirectorio
+bin/
+# Archivos de compilación / binarios
+obj/
+*.exe
+*.dll
+*.pdb
+*.nupkg
+publish/
+out/
+
+# Paquetes y artefactos de build
+node_modules/
+dist/
+build/
+*.tgz
+
+# Entornos y caches de lenguajes
+__pycache__/
+*.pyc
+venv/
+.env
+*.class
+*.jar
+
+# IDEs / editores
+.vscode/
+.idea/
+*.iml
+
+# Archivos del sistema y logs
+.DS_Store
+Thumbs.db
+*.log
+
+# Bases de datos locales / archivos de estado
+*.sqlite3
+*.db
+*.pid
+
+# Ficheros con secretos o claves
+.env.local
+*.key
+*.pem
+secrets.yml

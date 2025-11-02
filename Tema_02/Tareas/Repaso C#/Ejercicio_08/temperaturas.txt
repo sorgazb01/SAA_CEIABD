@@ -1,0 +1,7 @@
+Lunes: 20
+Martes 23
+Miércoles: 22
+Jueves: 18
+Viernes: 17
+Sábado: 18
+Domingo: 20
