@@ -227,8 +227,8 @@ class Program
     static void Main()
     {
         // Archivo de entrada y salida
-        const string fileInputPath = @"C:\Users\Sergio Orgaz Bravo\Documents\CE-IABD\SAA_CEIABD\Tema_02\Tareas\Limpiar DataSet\Limpiar_DataSet\data.csv";
-        const string fileOutputPath = @"C:\Users\Sergio Orgaz Bravo\Documents\CE-IABD\SAA_CEIABD\Tema_02\Tareas\Limpiar DataSet\Limpiar_DataSet\data_preprocessed.csv";
+        const string fileInputPath = "data.csv";
+        const string fileOutputPath = "data_preprocessed.csv";
 
         //////////////////////////////////////////////
         /// 1º LEEMOS FICHERO
@@ -257,16 +257,7 @@ class Program
         var colIndexMap = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
         for (int i = 0; i < header.Length; i++)
         {
-            var colName = Safe(header[i]);
-            if (string.IsNullOrEmpty(colName)) continue;
-
-            if (colIndexMap.ContainsKey(colName))
-            {
-                Console.WriteLine($"Columna duplicada '{colName}'.");
-                continue;
-            }
-
-            colIndexMap[colName] = i;
+            colIndexMap[header[i]] = i;
         }
 
         //////////////////////////////////////////////
@@ -281,6 +272,13 @@ class Program
         ];
 
         // TODO: Implementar
+        foreach (var col in headerColumnNames)
+        {
+            if (!colIndexMap.ContainsKey(col))
+            {
+                throw new Exception($"Falta columna: {col}");
+            }
+        }
 
         //////////////////////////////////////////////
         // 4º Imputamos valores restantes
@@ -291,20 +289,20 @@ class Program
             "Edad", "Ingresos_Mensuales", "Gastos_Anuales", "Calificación_Crédito", "Tiempo_Empleo",
         ];
 
-        foreach (var columna in numericColumnNames)
+        foreach (var col in numericColumnNames)
         {
-            int indiceColumna = colIndexMap[columna];
-            var valoresColumna = data
-                .Select(rows => ToNullableDouble(rows[indiceColumna]))
-                .ToArray();
+            int colIndex = colIndexMap[col];
+            var valuesInsideCurrentCol = data.Select(row => ToNullableDouble(row[colIndex])).ToArray();
 
-            double media = Mean(valoresColumna.Where(v => v.HasValue).Select(v => v!.Value));
+            // Obtenemos la media para imputar los valores restantes.
+            double mean = Mean(valuesInsideCurrentCol.Where(v => v.HasValue).Select(v => v!.Value));
 
-            for (int i = 0; i < valoresColumna.Length; i++)
+            for (int i = 0; i < data.Count; i++)
             {
-                if (!valoresColumna[i].HasValue)
+                // Si la columna no tiene valor
+                if (!valuesInsideCurrentCol[i].HasValue)
                 {
-                    data[i][indiceColumna] = StringToDouble(media);
+                    data[i][colIndex] = StringToDouble(mean); // Le asignamos la media que hemos calculado.
                 }
             }
         }
@@ -314,21 +312,23 @@ class Program
             "Género", "Educación",
         ];
 
-        foreach (var columna in categoricalColumnNames)
+        foreach (var col in categoricalColumnNames)
         {
-            int indiceColumna = colIndexMap[columna];
-            var valoresColumna = data
-                .Select(rows => Safe(rows[indiceColumna]))
-                .ToArray();
+            int colIndex = colIndexMap[col];
+            var values = data.Select(row => Safe(row[colIndex])).ToArray();
 
+            // Obtenemos la moda para imputar los valores restantes.
+            string mode = ModeCategorical(values);
 
-            string moda = ModeCategorical(valoresColumna);
-
-            for (int i = 0; i < valoresColumna.Length; i++)
+            // Recorremos todos los datos (las filas)
+            for (int i = 0; i < data.Count; i++)
             {
-                if (string.IsNullOrEmpty(valoresColumna[i]))
+                // Si la columna es null, vacía, or que solo tiene white-space caracteres
+                // O
+                // Si tiene el valor NaN
+                if (string.IsNullOrWhiteSpace(values[i]) || values[i].Equals("NaN", StringComparison.OrdinalIgnoreCase))
                 {
-                    data[i][indiceColumna] = moda;
+                    data[i][colIndex] = mode; // Le asignamos la moda que hemos calculado.
                 }
             }
         }
@@ -338,55 +338,28 @@ class Program
         //////////////////////////////////////////////
 
         var scaledCols = new Dictionary<string, double[]>();
-        // TODO: Implementar
-        foreach (var columna in scaledCols)
+        foreach (var col in numericColumnNames)
         {
-            int indiceColumna = colIndexMap[columna.Key];
+            int colIndex = colIndexMap[col];
+            var values = data.Select(row => ToNullableDouble(row[colIndex])!.Value).ToArray();
 
-            double[] valores = data
-                .Select(row => ToNullableDouble(row[indiceColumna]) ?? 0.0)
-                .ToArray();
-
-            double min = valores.Min();
-            double max = valores.Max();
-            double [] minmax;
-            if (Math.Abs(max - min) < 1e-12)
-            {
-                minmax = Enumerable.Repeat(0.0, valores.Length).ToArray();
-            }
-            else
-            {
-                minmax = MinMax(valores);
-            }
-
-            double media = valores.Average();
-            double var = valores.Select(x => (x - media) * (x - media)).Sum() / valores.Length;
-            double[] zscore;
-            if (var < 1e-12)
-            {
-                zscore = Enumerable.Repeat(0.0, valores.Length).ToArray();
-            }
-            else
-            {
-                zscore = ZScore(valores);
-            }
-            scaledCols[$"{columna}_MINMAX"] = minmax;
-            scaledCols[$"{columna}_ZSCORE"] = zscore;
+            // En este caso calculo los dos, pero debemos elegir uno u otro.
+            scaledCols[col + "_MinMax"] = MinMax(values);
+            scaledCols[col + "_ZScore"] = ZScore(values);
         }
+
 
         //////////////////////////////////////////////
         // 6º Codificación de variables categoricas
-        //////////////////////////////////////////////
-
+        ////////////////////////////////////////////// 
+        
         // Género one-hot
         string[] generoVals = data.Select(row => Safe(row[colIndexMap["Género"]])).ToArray();
-
-        var (genHeaders, genOheMatrix, genEncoder) = OneHotEncoding(generoVals, "Género");
+        var (genHeaders, genOheMatrix, genEncoder) = OneHotEncoding(generoVals, "Genero");
 
         // Educación one-hot
         string[] eduVals = data.Select(row => Safe(row[colIndexMap["Educación"]])).ToArray();
-
-        var (eduHeaders, eduOheMatrix, eduEncoder) = OneHotEncoding(eduVals, "Educación");
+        var (eduHeaders, eduOheMatrix, eduEncoder) = OneHotEncoding(eduVals, "Educacion");
 
         //////////////////////////////////////////////
         /// 7º GENERACIÓN DE NUEVAS CARACTERÍSTICAS
@@ -413,9 +386,8 @@ class Program
         outHeader.AddRange(eduHeaders); // OHE educación
         outHeader.Add("Ratio_Deuda"); // nueva característica
 
-        // // añadir escaladas (min-max y z-score)
-        var scaledKeys = scaledCols.Keys.OrderBy(k => k).ToList();
-        outHeader.AddRange(scaledKeys);
+        // añadir escaladas (min-max y z-score)
+        outHeader.AddRange(scaledCols.Keys);
 
         var outRows = new List<string[]>
         {
@@ -425,80 +397,36 @@ class Program
         for (int i = 0; i < data.Count; i++)
         {
             var row = new List<string>();
-            // TODO: ID
-            if (colIndexMap.TryGetValue("ID", out int idIdx))
+            // ID
+            row.Add(Safe(data[i][colIndexMap["ID"]]));
+
+            // numéricas imputadas
+            foreach (var c in numericColumnNames)
             {
-                row.Add(Safe(data[i][idIdx]));
-            }
-            else
-            {
-                row.Add(i.ToString());
+                row.Add(Safe(data[i][colIndexMap[c]]));
             }
 
-            // TODO: numéricas imputadas
-            foreach (var col in numericColumnNames)
+            // OHE género
+            for (int k = 0; k < genHeaders.Length; k++)
             {
-                if (colIndexMap.TryGetValue(col, out int idx))
-                {
-                    row.Add(Safe(data[i][idx]));
-                }
-                else
-                {
-                    row.Add(string.Empty);
-                }
+                row.Add(genOheMatrix[i][k].ToString());
             }
 
-            // TODO: OHE género
-            if (genOheMatrix != null && genOheMatrix.Length == data.Count)
+            // OHE educación
+            for (int k = 0; k < eduHeaders.Length; k++)
             {
-                foreach (var v in genOheMatrix[i])
-                {
-                    row.Add(v.ToString());
-                }
-            }
-            else
-            {
-                // rellenar con ceros si falta
-                foreach (var _ in genHeaders)
-                    row.Add("0");
+                row.Add(eduOheMatrix[i][k].ToString());
             }
 
-            // TODO: OHE educación
-            if (eduOheMatrix != null && eduOheMatrix.Length == data.Count)
+            // ratio
+            row.Add(StringToDouble(ratio[i]));
+
+            // escaladas
+            foreach (var kv in scaledCols)
             {
-                foreach (var v in eduOheMatrix[i])
-                {
-                    row.Add(v.ToString());
-                }
-            }
-            else
-            {
-                foreach (var _ in eduHeaders)
-                    row.Add("0");
+                row.Add(StringToDouble(kv.Value[i]));
             }
 
-            // TODO: ratio
-            if (i < ratio.Length)
-            {
-                row.Add(StringToDouble(ratio[i]));
-            }
-            else
-            {
-                row.Add("0");
-            }
-
-            // TODO: escaladas
-            foreach (var key in scaledKeys)
-            {
-                if (scaledCols.TryGetValue(key, out var vec) && i < vec.Length)
-                {
-                    row.Add(StringToDouble(vec[i]));
-                }
-                else
-                {
-                    row.Add("0");
-                }
-            }
             outRows.Add(row.ToArray());
         }
 
