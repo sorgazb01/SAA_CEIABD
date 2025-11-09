@@ -8,8 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Incluede="data.csv">
-    </None>
+    <None Include="data.csv"></None>
   </ItemGroup>
 
 </Project>
