@@ -18,3 +18,4 @@ TextLoader.Column[] columns = [
     new TextLoader.Column("Calificación_Crédito", DataKind.Single, 6),
     new TextLoader.Column("Tiempo_Empleo", DataKind.Single, 7)
 ];
+
