@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using System.IO;
 using Microsoft.ML;
 using Microsoft.ML.Data;
 using Microsoft.ML.Transforms;
@@ -9,19 +10,19 @@ const string fileOutputPath = "datos_meteorologicos_preprocessed.csv";
 MLContext mlContext = new();
 
 TextLoader.Column[] columns = [
-    new TextLoader.Column("Fecha", DataKind.Date, 0),
-    new TextLoader.Column("Edad", DataKind.Single, 1),
-    new TextLoader.Column("Genero", DataKind.String, 2),
-    new TextLoader.Column("Ingreso_Mensual_USD", DataKind.Single, 3),
-    new TextLoader.Column("Producto_Preferido", DataKind.String, 4),
-    new TextLoader.Column("Frecuencia_Compra_mensual", DataKind.Single, 5),
-    new TextLoader.Column("Region", DataKind.String, 6)
+    new TextLoader.Column("Fecha", DataKind.DateTime, 0),
+    new TextLoader.Column("Temperatura_C", DataKind.Double, 1),
+    new TextLoader.Column("Humedad_%", DataKind.Double, 2),
+    new TextLoader.Column("Tipo_de_Clima", DataKind.String, 3),
+    new TextLoader.Column("Velocidad_Viento_kmh", DataKind.Double, 4),
+    new TextLoader.Column("Precipitacion_mm", DataKind.Double, 5),
+    new TextLoader.Column("Presion_hPa", DataKind.Double, 6)
 ];
 
 var loader = mlContext.Data.CreateTextLoader(new TextLoader.Options
 {
     HasHeader = true,
-    Separators = [','],
+    Separators = new[] { ',' },
     TrimWhitespace = true,
     MissingRealsAsNaNs = true,
     Columns = columns
@@ -29,25 +30,32 @@ var loader = mlContext.Data.CreateTextLoader(new TextLoader.Options
 
 IDataView data = loader.Load(fileInputPath);
 
-var pipeline = mlContext.Transforms.ReplaceMissingValues(outputColumnName: "Edad", inputColumnName: "Edad", replacementMode: MissingValueReplacingEstimator.ReplacementMode.Mean)
-.Append(mlContext.Transforms.ReplaceMissingValues(outputColumnName: "Ingreso_Mensual_USD", inputColumnName: "Ingreso_Mensual_USD", replacementMode: MissingValueReplacingEstimator.ReplacementMode.Mean))
-.Append(mlContext.Transforms.ReplaceMissingValues(outputColumnName: "Frecuencia_Compra_mensual", inputColumnName: "Frecuencia_Compra_mensual", replacementMode: MissingValueReplacingEstimator.ReplacementMode.Mean))
+var pipeline = mlContext.Transforms.ReplaceMissingValues(outputColumnName: "Temperatura_C", inputColumnName: "Temperatura_C",replacementMode: MissingValueReplacingEstimator.ReplacementMode.Mean)
+.Append(mlContext.Transforms.ReplaceMissingValues(outputColumnName: "Humedad_%", inputColumnName: "Humedad_%", replacementMode: MissingValueReplacingEstimator.ReplacementMode.Mean))
+.Append(mlContext.Transforms.ReplaceMissingValues(outputColumnName: "Velocidad_Viento_kmh", inputColumnName: "Velocidad_Viento_kmh", replacementMode: MissingValueReplacingEstimator.ReplacementMode.Mean))
+.Append(mlContext.Transforms.ReplaceMissingValues(outputColumnName: "Precipitacion_mm", inputColumnName: "Precipitacion_mm", replacementMode: MissingValueReplacingEstimator.ReplacementMode.Mean))
+.Append(mlContext.Transforms.ReplaceMissingValues(outputColumnName: "Presion_hPa", inputColumnName: "Presion_hPa", replacementMode: MissingValueReplacingEstimator.ReplacementMode.Mean))
 
-.Append(mlContext.Transforms.Categorical.OneHotEncoding("Genero_Encoded", "Genero"))
-.Append(mlContext.Transforms.Categorical.OneHotEncoding("Producto_Preferido_Encoded", "Producto_Preferido"))
-.Append(mlContext.Transforms.Categorical.OneHotEncoding("Region_Encoded", "Region"))
+.Append(mlContext.Transforms.Categorical.OneHotEncoding(outputColumnName: "Tipo_de_Clima_Encoded",inputColumnName: "Tipo_de_Clima"))
 
-.Append(mlContext.Transforms.NormalizeMinMax("Edad_MinMax", "Edad"))
-.Append(mlContext.Transforms.NormalizeMinMax("Ingreso_Mensual_USD_MinMax", "Ingreso_Mensual_USD"))
-.Append(mlContext.Transforms.NormalizeMinMax("Frecuencia_Compra_mensual_MinMax", "Frecuencia_Compra_mensual"))
+.Append(mlContext.Transforms.Conversion.ConvertType(outputColumnName: "Tipo_de_Clima_Encoded_Double", inputColumnName: "Tipo_de_Clima_Encoded", outputKind: DataKind.Double))
 
-.Append(mlContext.Transforms.NormalizeMeanVariance("Edad_ZScore", "Edad"))
-.Append(mlContext.Transforms.NormalizeMeanVariance("Ingreso_Mensual_USD_ZScore", "Ingreso_Mensual_USD"))
-.Append(mlContext.Transforms.NormalizeMeanVariance("Frecuencia_Compra_mensual_ZScore", "Frecuencia_Compra_mensual"))
-.Append(mlContext.Transforms.Concatenate("Features", "Edad_ZScore", "Ingreso_Mensual_USD_ZScore", "Frecuencia_Compra_mensual_ZScore", "Genero_Encoded", "Producto_Preferido_Encoded","Region_Encoded"))
-.Append(mlContext.Transforms.SelectColumns("ID_Cliente", "Features"));
+.Append(mlContext.Transforms.NormalizeMinMax("Temperatura_C_MinMax", "Temperatura_C"))
+.Append(mlContext.Transforms.NormalizeMinMax("Humedad_%_MinMax", "Humedad_%"))
+.Append(mlContext.Transforms.NormalizeMinMax("Velocidad_Viento_kmh_MinMax", "Velocidad_Viento_kmh"))
+.Append(mlContext.Transforms.NormalizeMinMax("Precipitacion_mm_MinMax", "Precipitacion_mm"))
+.Append(mlContext.Transforms.NormalizeMinMax("Presion_hPa_MinMax", "Presion_hPa"))
 
+    
+.Append(mlContext.Transforms.NormalizeMeanVariance("Temperatura_C_ZScore", "Temperatura_C"))
+.Append(mlContext.Transforms.NormalizeMeanVariance("Humedad_%_ZScore", "Humedad_%"))
+.Append(mlContext.Transforms.NormalizeMeanVariance("Velocidad_Viento_kmh_ZScore", "Velocidad_Viento_kmh"))
+.Append(mlContext.Transforms.NormalizeMeanVariance("Precipitacion_mm_ZScore", "Precipitacion_mm"))
+.Append(mlContext.Transforms.NormalizeMeanVariance("Presion_hPa_ZScore", "Presion_hPa"))
 
+.Append(mlContext.Transforms.Concatenate("Features", "Temperatura_C_ZScore", "Humedad_%_ZScore", "Velocidad_Viento_kmh_ZScore", "Precipitacion_mm_ZScore", "Presion_hPa_ZScore", "Tipo_de_Clima_Encoded_Double"))
+
+.Append(mlContext.Transforms.SelectColumns("Fecha", "Features"));
 
 ITransformer transformer = pipeline.Fit(data);
 IDataView transformedData = transformer.Transform(data);
