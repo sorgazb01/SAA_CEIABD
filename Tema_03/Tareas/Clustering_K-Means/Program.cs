@@ -14,10 +14,6 @@ var splitData = mlContext.Data.TrainTestSplit(data, testFraction: 0.2);
 
 for (int k = 2; k <= 8; k++)
 {
-    Console.WriteLine($"\n{'='*60}");
-    Console.WriteLine($"NÚMERO DE CLUSTERS (K): {k}");
-    Console.WriteLine($"{'='*60}");
-
     var pipeline = mlContext.Transforms.Concatenate(
             outputColumnName: "Features", 
             nameof(ClienteInput.Edad),
@@ -35,8 +31,6 @@ for (int k = 2; k <= 8; k++)
         data: predictions, 
         scoreColumnName: "Score", 
         featureColumnName: "Features");
-
-    Console.WriteLine("\n--- MÉTRICAS DE EVALUACIÓN ---");
     Console.WriteLine($"Average Distance: {metrics.AverageDistance:F4}");
     Console.WriteLine($"Davies Bouldin Index: {metrics.DaviesBouldinIndex:F4}");
     Console.WriteLine($"Normalized Mutual Information: {metrics.NormalizedMutualInformation:F4}");
@@ -53,12 +47,11 @@ for (int k = 2; k <= 8; k++)
         resultados.Add((c, pred.PredictedLabel));
     }
     
-    Console.WriteLine("ANÁLISIS POR CLUSTER");
     foreach (var grp in resultados.GroupBy(r => r.ClusterId).OrderBy(g => g.Key))
     {
-        Console.WriteLine($"\n🔹 Cluster {grp.Key} ({grp.Count()} clientes):");
+        Console.WriteLine($"\nCluster {grp.Key}");
         
-        Console.WriteLine($"   Edad media: {grp.Average(r => r.Cliente.Edad):F1} años");
+        Console.WriteLine($"   Edad media: {grp.Average(r => r.Cliente.Edad):F1}");
         Console.WriteLine($"   Noches por estancia: {grp.Average(r => r.Cliente.NochesPorEstancia):F1}");
         Console.WriteLine($"   % que viaja con niños: {grp.Average(r => r.Cliente.ViajaConNinos) * 100:F1}%");
         Console.WriteLine($"   Gasto medio: {grp.Average(r => r.Cliente.GastoMedio):F0} €");
