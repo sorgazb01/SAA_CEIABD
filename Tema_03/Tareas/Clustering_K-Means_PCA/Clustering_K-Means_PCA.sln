@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clustering_K-Means_PCA", "Clustering_K-Means_PCA.csproj", "{D30C4EE5-560D-22EE-E444-B74969DBC93E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D30C4EE5-560D-22EE-E444-B74969DBC93E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D30C4EE5-560D-22EE-E444-B74969DBC93E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D30C4EE5-560D-22EE-E444-B74969DBC93E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D30C4EE5-560D-22EE-E444-B74969DBC93E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EC7357B6-6FE4-4FC1-9EE3-14BA20E31DB1}
+	EndGlobalSection
+EndGlobal
