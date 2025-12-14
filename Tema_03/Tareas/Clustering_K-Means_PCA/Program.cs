@@ -37,7 +37,7 @@ for (int r = 2; r <= 4; r++)
     var model = clusteringPipeline.Fit(splitData.TrainSet);
     var predictions = model.Transform(splitData.TestSet);
 
-    ClusteringMetrics metrics = mlContext.Clustering.Evaluate(data: predictions, scoreColumnName: "Score", featureColumnName: "Features");
+    ClusteringMetrics metrics = mlContext.Clustering.Evaluate(data: predictions, scoreColumnName: "Score", featureColumnName: "PcaFeatures");
     
     Console.WriteLine($"Average Distance: {metrics.AverageDistance:F4}");
     Console.WriteLine($"Davies Bouldin Index: {metrics.DaviesBouldinIndex:F4}");
