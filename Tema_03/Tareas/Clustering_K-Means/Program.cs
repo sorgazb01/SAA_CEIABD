@@ -14,7 +14,6 @@ var splitData = mlContext.Data.TrainTestSplit(data, testFraction: 0.2);
 
 for (int k = 2; k <= 8; k++)
 {
-
     Console.WriteLine("K = " + k);
 
     var pipeline = mlContext.Transforms.Concatenate(
