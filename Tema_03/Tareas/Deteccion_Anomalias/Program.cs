@@ -4,21 +4,24 @@ using Microsoft.ML.Trainers;
 using Deteccion_Anomalias.Models;
 
 var mlContext = new MLContext(seed: 666);
-
 const string DataSet = "Data/anomalias_conduccion.csv";
 
+// Carga de los datos
 IDataView dataView = mlContext.Data.LoadFromTextFile<ConduccionData>(
     path: DataSet,
     hasHeader: true,
     separatorChar: ','
 );
 
+// Defino los datos de entrenamiento, utilizando la columna Label para tener en cuenta,
+// los datos cuyo Label sea superior a 0.5, es decir 1, como datos normales
 var trainingData = mlContext.Data.FilterRowsByColumn(
     dataView,
     nameof(ConduccionData.Label),
     upperBound: 0.5
 );
 
+// Preprocesado, utilizamos el OneHotEncoding para normalizar la variable categorica de TipoDeVia
 var preProcessingPipeline = mlContext.Transforms.Categorical.OneHotEncoding(outputColumnName: "TipoDeVia_NoCategorica", inputColumnName: nameof(ConduccionData.TipoDeVia))
     .Append(mlContext.Transforms.Concatenate(
         "Features",
@@ -36,6 +39,7 @@ var preProcessingPipeline = mlContext.Transforms.Categorical.OneHotEncoding(outp
     )
 ).Append(mlContext.Transforms.NormalizeMeanVariance("Features"));
 
+// Pipeline para la deteccion de anomalias 
 var rPcaPipeline = preProcessingPipeline.Append(
     mlContext.AnomalyDetection.Trainers.RandomizedPca(
         featureColumnName: "Features",
@@ -43,9 +47,10 @@ var rPcaPipeline = preProcessingPipeline.Append(
     )
 );
 
+// Entrenamiento del modelo con los datos normales
 var model = rPcaPipeline.Fit(trainingData);
 
-
+// Pruebas con distintos umbrales
 foreach (var t in new[] { 0.30f, 0.45f, 0.60f, 0.50f })
 {
     var preproModel = model.Take(model.Count() - 1);
@@ -66,11 +71,10 @@ foreach (var t in new[] { 0.30f, 0.45f, 0.60f, 0.50f })
     Console.WriteLine($"Threshold {t:F2}: {count} anomalías detectadas");
 }
 
-
-
+// Consumo el modelo
 var predictions = model.Transform(dataView);
 
-
+// Medir el modelo
 var metrics = mlContext.AnomalyDetection.Evaluate(
     data: predictions,
     labelColumnName: "Label",
