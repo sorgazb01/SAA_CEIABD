@@ -12,6 +12,6 @@
   </ItemGroup>
   
   <ItemGroup>
-    <None Update="Data/manufactoring_anomalies.csv" CopyToOutputDirectory="Always" />
+    <None Update="Data/anomalias_conduccion.csv" CopyToOutputDirectory="Always" />
   </ItemGroup>
 </Project>
