@@ -1,0 +1,250 @@
+Compré zapatillas y la talla viene perfecta; son cómodas y no rozan.
+Las zapatillas llegaron tarde y la caja venía golpeada; aun así, bien.
+Zapatillas con buena amortiguación, pero el tejido se ensucia rápido.
+Se despegó la suela de las zapatillas a la semana; las devolví.
+Relación calidad-precio muy buena en estas zapatillas; repetiría.
+Las zapatillas aprietan en el empeine; mejor pedir medio número más.
+Compré cafetera y el café sale caliente; fácil de limpiar.
+La cafetera pierde agua por abajo; no coincide con la descripción.
+Cafetera ruidosa, pero hace buen café; por el precio está bien.
+La cafetera llegó con piezas sueltas; tuve que pedir reemplazo.
+Muy buena cafetera para diario; calienta rápido y no falla.
+Cafetera con depósito pequeño; para dos personas se queda corta.
+Compré smartphone y va fluido; pantalla brillante y buen color.
+El smartphone se calienta al cargar; me preocupa la batería.
+Smartphone con cámara decente de día; de noche flojea bastante.
+El smartphone vino con arañazo; devolución inmediata.
+Batería del smartphone dura todo el día; carga rápida correcta.
+El smartphone pierde cobertura a veces; no me convence.
+Compré mochila y tiene muchos bolsillos; cabe el portátil.
+La mochila vino con costura abierta; mala calidad.
+Mochila cómoda en la espalda; tirantes acolchados bien.
+La mochila huele fuerte a plástico; espero que se vaya.
+Buena mochila por el precio; cremalleras suaves y fuertes.
+La mochila es más pequeña de lo que parece en fotos; ojo.
+Compré auriculares y suenan muy bien; bajos potentes.
+Auriculares con retardo en vídeos; para juegos no sirven.
+Los auriculares aprietan y cansan; no para sesiones largas.
+Auriculares pierden conexión en la calle; muy mal.
+Micrófono de los auriculares correcto; para llamadas ok.
+La batería de los auriculares dura poco; hay que cargarlos siempre.
+Compré silla de oficina y el montaje fue sencillo; instrucciones claras.
+La silla de oficina cruje al inclinar; se aflojan tornillos.
+Silla cómoda, buen apoyo lumbar; para teletrabajo perfecta.
+La silla venía con un tornillo menos; tuve que improvisar.
+Ruedas suaves en la silla; no raya el suelo.
+El respaldo de la silla es duro; no aguanto 8 horas.
+Compré robot aspirador y mapea bien; deja el suelo limpio.
+El robot aspirador se atasca con cables; hay que recoger antes.
+Robot aspirador hace bastante ruido en turbo; normal.
+La app del robot aspirador es simple; configuración rápida.
+Batería del robot aspirador muy buena; vuelve a la base solo.
+El depósito del robot aspirador es pequeño; toca vaciar a menudo.
+Compré smartwatch y se ve bien al sol; pantalla correcta.
+El smartwatch se desconecta del móvil; molesto.
+Smartwatch con vibración fuerte; no te pierdes notificaciones.
+La medición de pulso del smartwatch falla; esperaba más.
+Batería del smartwatch dura dos días; suficiente.
+El cargador del smartwatch se suelta; diseño mejorable.
+Compré teclado mecánico y escribir da gusto; buen tacto.
+El teclado mecánico es muy ruidoso; no apto para oficina.
+Teclado con keycaps de repuesto; buen detalle.
+Una tecla del teclado no responde siempre; devolución.
+El teclado trae cable corto; poco práctico.
+Buen teclado por el precio; materiales sólidos.
+Compré ratón y es preciso; agarre cómodo.
+El ratón hace doble clic a veces; parece defecto.
+Ratón muy pequeño para mano grande; incómodo.
+Botones laterales del ratón útiles; buena ergonomía.
+La rueda del ratón es ruidosa; se nota barato.
+Ratón ligero para jugar; sensor cumple.
+Compré altavoz bluetooth y suena fuerte; sorprende por tamaño.
+El altavoz distorsiona al máximo; mejor a volumen medio.
+Altavoz pierde conexión si te alejas; alcance corto.
+Batería del altavoz dura menos de 4 horas; flojo.
+Altavoz con voces claras; ideal para podcasts.
+La luz del altavoz molesta de noche; debería apagarse.
+Compré monitor y los colores son buenos; buen ángulo de visión.
+El monitor tiene fugas de luz; para cine se nota.
+Monitor llegó con un píxel muerto; pedí cambio.
+Buen monitor para trabajar; texto nítido y sin parpadeo.
+El soporte del monitor es endeble; tuve que poner brazo.
+Monitor con altavoces malos; pero no los uso.
+Compré portátil y arranca rápido; teclado cómodo.
+El portátil se calienta mucho; ventilador ruidoso.
+Portátil con batería justa; 4 horas como mucho.
+La pantalla del portátil es oscura; en exterior mal.
+Buen portátil por el precio; para estudiar va bien.
+El cargador del portátil hace zumbido; no me gusta.
+Compré tablet y para apuntes va genial; ligera.
+La tablet no detecta bien el lápiz; falla a veces.
+Tablet con buena pantalla; streaming perfecto.
+La batería de la tablet dura muchísimo; contento.
+Tablet viene con poca memoria; toca usar nube.
+Altavoces de la tablet flojos; con cascos mejor.
+Compré impresora y imprime rápido; buena para casa.
+La impresora se queda sin tinta enseguida; un abuso.
+Impresora no detecta el WiFi; configuración eterna.
+Buen escáner en la impresora; cumple para documentos.
+La impresora hace ruido al arrancar; normal supongo.
+Cartuchos carísimos; no compensa esta impresora.
+Compré disco SSD y el PC vuela; instalación fácil.
+El SSD vino mal embalado; pero funciona.
+SSD con buena velocidad; se nota al abrir programas.
+El SSD se desconecta a veces; puede ser mi cable.
+Buen SSD por el precio; recomendado.
+La carcasa del SSD se calienta; pero aguanta.
+Compré router y mejoró la cobertura; por fin.
+El router se reinicia solo; muy mal.
+Router con app sencilla; se configura en 5 minutos.
+El WiFi del router no llega a la habitación; decepción.
+Buen router para piso pequeño; estable.
+Luces del router muy brillantes; tuve que taparlas.
+Compré cámara y la calidad es buena; enfoque rápido.
+La cámara vino sin batería; no lo indicaba.
+Cámara con estabilización decente; vídeos suaves.
+La app de la cámara se cuelga; frustrante.
+Buena cámara para iniciarse; menú claro.
+La cámara hace ruido al enfocar; se escucha en vídeo.
+Compré freidora de aire y cocina rápido; crujiente.
+La freidora huele a plástico al principio; luego se va.
+Freidora demasiado pequeña; para familia no sirve.
+La cesta de la freidora se raya fácil; mala capa.
+Buen resultado con patatas y pollo; satisfecho.
+La freidora es ruidosa; pero soportable.
+Compré aspiradora y succión fuerte; recoge bien.
+La aspiradora pesa mucho; cansa.
+Aspiradora con depósito fácil de vaciar; bien.
+El cable de la aspiradora es corto; incómodo.
+Buen filtro en la aspiradora; menos polvo.
+La aspiradora hace un ruido enorme; tapones casi.
+Compré cafetera de cápsulas y es cómoda; café rápido.
+Las cápsulas salen caras; al final no compensa.
+La cafetera de cápsulas gotea; devolví.
+Buen café para el día a día; sin complicación.
+La cafetera tarda en calentar; pensaba que era más rápida.
+Muy fácil de usar; mi padre la entiende sin problema.
+Compré zapatillas para correr y el agarre es excelente.
+En mojado patinan un poco; esperaba más.
+Zapatillas con cordones malos; se deshilachan.
+Plantilla dura; tuve que cambiarla.
+Muy ligeras; para caminar largas distancias bien.
+Se deforman por la puntera;
+Muy contento con smartwatch; se nota robusto y bien acabado (se ve bien al sol).
+Cafetera: buena calidad por el precio; repetiría compra (calienta rápido).
+Compré portátil y funciona perfecto; cumple lo prometido.
+Smartphone con gran relación calidad-precio; recomendado (va fluido).
+Compré ratón y funciona perfecto; cumple lo prometido (preciso).
+Aspiradora: no coincide con la descripción; no lo recomiendo.
+Mochila llegó rápido y bien embalado; todo correcto (tirantes acolchados).
+Monitor: funciona, pero la calidad es justita y se nota.
+Compré cafetera y llegó tarde; además venía mal embalado (muy ruidosa).
+Silla de oficina: buena calidad por el precio; repetiría compra (montaje sencillo).
+Muy contento con SSD; se nota robusto y bien acabado.
+Tablet llegó rápido y bien embalado; todo correcto.
+Altavoz bluetooth con gran relación calidad-precio; recomendado (voces claras).
+Compré robot aspirador y funciona perfecto; cumple lo prometido (mapea bien).
+Smartphone: para el precio esperaba más; me decepcionó (se calienta).
+Compré mochila y funciona perfecto; cumple lo prometido (muchos bolsillos).
+Impresora: funciona, pero la calidad es justita y se nota.
+Ratón llegó rápido y bien embalado; todo correcto (cómodo).
+Compré router y funciona perfecto; cumple lo prometido.
+Compré altavoz bluetooth y llegó tarde; además venía mal embalado (se desconecta).
+Teclado mecánico: buena calidad por el precio; repetiría compra (buen tacto).
+Compré monitor y funciona perfecto; cumple lo prometido.
+Smartphone llegó rápido y bien embalado; todo correcto (pantalla brillante).
+Compré cafetera y funciona perfecto; cumple lo prometido (fácil de limpiar).
+Robot aspirador: no coincide con la descripción; no lo recomiendo (se atasca con cables).
+Muy contento con zapatillas; se nota robusto y bien acabado (cómodas).
+Impresora: para el precio esperaba más; me decepcionó.
+Compré auriculares y funciona perfecto; cumple lo prometido (buen sonido).
+Smartwatch: buena calidad por el precio; repetiría compra (notificaciones perfectas).
+Router: buena calidad por el precio; repetiría compra.
+Compré portátil y llegó tarde; además venía mal embalado.
+Zapatillas: funciona, pero la calidad es justita y se nota (talla justa).
+Cafetera con gran relación calidad-precio; recomendado (compacta).
+Compré aspiradora y funciona perfecto; cumple lo prometido.
+Tablet: para el precio esperaba más; me decepcionó.
+Compré silla de oficina y llegó tarde; además venía mal embalado (cruje).
+Auriculares con gran relación calidad-precio; recomendado (emparejan rápido).
+Compré freidora de aire y funciona perfecto; cumple lo prometido.
+Monitor llegó rápido y bien embalado; todo correcto.
+Compré teclado mecánico y llegó tarde; además venía mal embalado (muy ruidoso).
+Muy contento con mochila; se nota robusto y bien acabado (cabe portátil).
+Smartphone: buena calidad por el precio; repetiría compra (carga rápida).
+Compré cámara y funciona perfecto; cumple lo prometido.
+Impresora llegó rápido y bien embalado; todo correcto.
+Ratón: para el precio esperaba más; me decepcionó (doble clic).
+Muy contento con robot aspirador; se nota robusto y bien acabado (vuelve a la base).
+Router: no coincide con la descripción; no lo recomiendo.
+Compré zapatillas y llegó tarde; además venía mal embalado (rozaduras).
+Cafetera: no coincide con la descripción; no lo recomiendo (pierde agua).
+Muy contento con altavoz bluetooth; se nota robusto y bien acabado (suena fuerte).
+Tablet con gran relación calidad-precio; recomendado.
+SSD: buena calidad por el precio; repetiría compra.
+Aspiradora: para el precio esperaba más; me decepcionó.
+Compré robot aspirador y llegó tarde; además venía mal embalado (hace ruido).
+Muy contento con silla de oficina; se nota robusto y bien acabado (ruedas suaves).
+Smartwatch: no coincide con la descripción; no lo recomiendo (app mala).
+Compré auriculares y llegó tarde; además venía mal embalado (pierden conexión).
+Muy contento con smartphone; se nota robusto y bien acabado (batería dura todo el día).
+Compré mochila y llegó tarde; además venía mal embalado (costuras flojas).
+Teclado mecánico llegó rápido y bien embalado; todo correcto (material sólido).
+Ratón: buena calidad por el precio; repetiría compra (botones laterales útiles).
+Altavoz bluetooth: para el precio esperaba más; me decepcionó (distorsiona).
+Monitor: no coincide con la descripción; no lo recomiendo.
+Compré portátil y funciona perfecto; cumple lo prometido.
+Compré freidora de aire y llegó tarde; además venía mal embalado.
+Tablet: funciona, pero la calidad es justita y se nota.
+Impresora: no coincide con la descripción; no lo recomiendo.
+SSD llegó rápido y bien embalado; todo correcto.
+Router con gran relación calidad-precio; recomendado.
+Cámara: para el precio esperaba más; me decepcionó.
+Aspiradora llegó rápido y bien embalado; todo correcto.
+Compré zapatillas y funciona perfecto; cumple lo prometido (buen agarre).
+Cafetera llegó rápido y bien embalado; todo correcto (café sale caliente).
+Smartwatch con gran relación calidad-precio; recomendado (batería de 2 días).
+Compré teclado mecánico y funciona perfecto; cumple lo prometido (iluminación bonita).
+Ratón: funciona, pero la calidad es justita y se nota (acabado barato).
+Altavoz bluetooth llegó rápido y bien embalado; todo correcto (conecta rápido).
+Monitor: buena calidad por el precio; repetiría compra.
+Portátil: para el precio esperaba más; me decepcionó.
+Tablet llegó rápido y bien embalado; todo correcto.
+Impresora: funciona, pero la calidad es justita y se nota.
+SSD: no coincide con la descripción; no lo recomiendo.
+Router llegó rápido y bien embalado; todo correcto.
+Cámara con gran relación calidad-precio; recomendado.
+Freidora de aire: buena calidad por el precio; repetiría compra.
+Aspiradora: no coincide con la descripción; no lo recomiendo.
+Robot aspirador con gran relación calidad-precio; recomendado (limpia pelo de mascota).
+Silla de oficina: para el precio esperaba más; me decepcionó (respaldo duro).
+Auriculares: buena calidad por el precio; repetiría compra (cómodos).
+Smartphone: no coincide con la descripción; no lo recomiendo (reinicios).
+Mochila: buena calidad por el precio; repetiría compra (cremalleras suaves).
+Zapatillas: para el precio esperaba más; me decepcionó (suela se despega).
+Cafetera: funciona, pero la calidad es justita y se nota (depósito pequeño).
+Smartwatch llegó rápido y bien embalado; todo correcto (ligero).
+Teclado mecánico: para el precio esperaba más; me decepcionó (tecla falla).
+Ratón con gran relación calidad-precio; recomendado (ligero).
+Altavoz bluetooth: funciona, pero la calidad es justita y se nota (batería corta).
+Robot aspirador llegó rápido y bien embalado; todo correcto (buena autonomía).
+Silla de oficina: no coincide con la descripción; no lo recomiendo (tornillos flojos).
+Mala experiencia con smartwatch; falló a los pocos días (mide mal el pulso).
+Monitor: colores correctos y buena nitidez para texto.
+El monitor tiene fugas de luz en esquinas; de noche molesta.
+Monitor llegó con un píxel muerto; tramité cambio.
+Portátil ligero, teclado cómodo; para clase perfecto.
+Portátil se calienta y el ventilador hace ruido constante.
+La batería del portátil no llega a 5 horas; decepción.
+Tablet rápida y pantalla buena para leer; muy contento.
+La tablet se queda corta de almacenamiento; toca microSD.
+El táctil de la tablet falla a veces; no me convence.
+Impresora imprime bien pero gasta tinta demasiado rápido.
+La impresora no conecta al WiFi; configuración eterna.
+Impresora compacta, escanea bien; cumple.
+SSD instalable en minutos; el PC arranca volando.
+El SSD se calienta bastante en carga; ojo en portátil.
+SSD con buena velocidad por el precio; recomendado.
+Router mejoró mucho la cobertura en casa; estable.
+El router se reinicia solo cada dos días; muy mal.
+Router con app sencilla; en 5 minutos estaba listo.
