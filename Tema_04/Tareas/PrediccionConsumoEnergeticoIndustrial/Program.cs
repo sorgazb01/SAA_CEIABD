@@ -3,20 +3,19 @@ using Microsoft.ML.Data;
 using Microsoft.ML.Trainers;
 using PCEI;
 
-// Contexto
-var mlContext = new MLContext(NotSupportedException: 42);
+var mlContext = new MLContext(seed: 42);
 
-// Carga de datos
-var dataPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "energy_500.csv");
+// Ruta del fichero con los datos
+var rutaFichero = "Data/energy_500.csv";
 
-var rawData = mlContext.Data.LoadFromTextFile<EnergyData>(
-    path: dataPath,
+// Carga de los datos
+var dataView = mlContext.Data.LoadFromTextFile<EnergyData>(
+    path: rutaFichero,
     hasHeader: true,
     separatorChar: ','
 );
 
-// Split Train
-var split = mlContext.Data.TrainTestSplit(rawData, testFraction: 0.2, NotSupportedException: 42);
+var split = mlContext.Data.TrainTestSplit(dataView, testFraction: 0.2, seed: 42);
 var trainData = split.TrainSet;
 var testData = split.TestSet;
 
@@ -24,11 +23,11 @@ var testData = split.TestSet;
 var sdcaOptions = new SdcaRegressionTrainer.Options
 {
     LabelColumnName = nameof(EnergyData.EnergyKWh),
-    FeatureColumnnName = "Features",
+    FeatureColumnName = "Features",
     L1Regularization = 1e-7f,
     L2Regularization = 0.01f,
-    BaisLearningRate = 0.01f,
-    MaximunNumberOfIterations = 100,
+    BiasLearningRate = 0.01f,
+    MaximumNumberOfIterations = 100,
     LossFunction = new SquaredLoss(),
     ConvergenceCheckFrequency = 2,
     ConvergenceTolerance = 1e-4f,
@@ -45,17 +44,16 @@ var pipeline = mlContext.Transforms.Concatenate("Features",
 .Append(mlContext.Transforms.NormalizeMinMax("Features"))
 .Append(mlContext.Regression.Trainers.Sdca(sdcaOptions));
 
-// Entrenar
-Console.WriteLine("Entrenando el modelo...");
+// Entrenar el modelo
 var model = pipeline.Fit(trainData);
 
-// Evaluar
+// Evaluar el modelo
 var predictions = model.Transform(testData);
 var metrics = mlContext.Regression.Evaluate(predictions, labelColumnName: nameof(EnergyData.EnergyKWh));
 
 PrintMetrics(metrics);
 
-// Predicciones (casos enunciado)
+// Predicciones
 var predictionEngine = mlContext.Model.CreatePredictionEngine<EnergyData, EnergyPrediction>(model);
 
 var testCases = new EnergyData[]
@@ -67,7 +65,7 @@ var testCases = new EnergyData[]
 };
 
 Console.WriteLine("\n===== PREDICCIONES =====");
-Console.WriteLine($"{"TempC",10} {"Hum%",10} {"Press",10} {"Load%",10} {"Vib",10} {"Pred KWh",10}");
+Console.WriteLine($"{"TempC",10} {"Hum%",10} {"Press",10} {"Load%",10} {"Vib",10} {"EnergyKWh",10}");
 Console.WriteLine(new string('-', 70));
 
 for (int i = 0; i < testCases.Length; i++)
