@@ -39,7 +39,7 @@ var fastForestOptions = new FastForestBinaryTrainer.Options
 var fastForestPipeline = preprocessingPipelineCommon.Append(mlContext.BinaryClassification.Trainers.FastForest(fastForestOptions));
 var fastForestModel = fastForestPipeline.Fit(trainData);
 var fastForestPredictions = fastForestModel.Transform(testData);
-var fastForestMetrics = mlContext.BinaryClassification.Evaluate(fastForestPredictions, labelColumnName: "Label");
+var fastForestMetrics = mlContext.BinaryClassification.EvaluateNonCalibrated(fastForestPredictions, labelColumnName: "Label");
 
 // 5. Modelo 2: LightGbm (gradient boosting)
 var lightGbmOptions = new LightGbmBinaryTrainer.Options
@@ -53,7 +53,7 @@ var lightGbmOptions = new LightGbmBinaryTrainer.Options
 var lightGbmPipeline = preprocessingPipelineCommon.Append(mlContext.BinaryClassification.Trainers.LightGbm(lightGbmOptions));
 var lightGbmModel = lightGbmPipeline.Fit(trainData);
 var lightGbmPredictions = lightGbmModel.Transform(testData);
-var lightGbmMetrics = mlContext.BinaryClassification.EvaluateNonCalibrated(lightGbmPredictions, labelColumnName: "Label");
+var lightGbmMetrics = mlContext.BinaryClassification.Evaluate(lightGbmPredictions, labelColumnName: "Label");
 
 // 6. Mostrar resultados
 Console.WriteLine("===== RESULTADOS FASTFOREST =====");
