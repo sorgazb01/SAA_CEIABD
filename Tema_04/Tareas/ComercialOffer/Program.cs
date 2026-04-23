@@ -44,10 +44,10 @@ var fastForestMetrics = mlContext.BinaryClassification.EvaluateNonCalibrated(fas
 // 5. Modelo 2: LightGbm (gradient boosting)
 var lightGbmOptions = new LightGbmBinaryTrainer.Options
 {
-    NumberOfIterations = 100,
-    NumberOfLeaves = 31,
-    MinimumExampleCountPerLeaf = 10,
-    LearningRate = 0.1f,
+    NumberOfIterations = 200,
+    NumberOfLeaves = 10,
+    MinimumExampleCountPerLeaf = 25,
+    LearningRate = 0.05f,
 };
 
 var lightGbmPipeline = preprocessingPipelineCommon.Append(mlContext.BinaryClassification.Trainers.LightGbm(lightGbmOptions));
